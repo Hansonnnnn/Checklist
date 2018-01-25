@@ -89,6 +89,7 @@ class ChecklistsViewController: UITableViewController {
 //            item.checked = !item.checked
             //进一步抽象为方法
             item.toggleChecked()
+            
 //            items[indexPath.row].checked = !items[indexPath.row].checked
 //            if indexPath.row == 0{
 //                row0item.checked = !row0item.checked
