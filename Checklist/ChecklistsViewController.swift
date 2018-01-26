@@ -150,5 +150,27 @@ class ChecklistsViewController: UITableViewController {
         label.text = item.text
     }
 
+    @IBAction func addItem(){
+        let newRowIndex = items.count
+//        print(newRowIndex)
+        let item = ChecklistItem()
+        item.text = "I am a new row"
+        item.checked = false
+        items.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        
+        tableView.insertRows(at: indexPaths, with: .automatic)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
+        //分为两步，data model删除该元素；界面删除该元素所在行
+        items.remove(at: indexPath.row)
+        //注意一个地方：不管是增加还是删除，都是对数组进行操作
+        let indexPaths = [indexPath]
+        //.automatic是动画效果
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
 }
 
