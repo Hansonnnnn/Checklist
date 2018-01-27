@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChecklistsViewController: UITableViewController {
+class ChecklistsViewController: UITableViewController, AddItemViewControllerDelegate {
     var items: [ChecklistItem]
 //    var row0item: ChecklistItem
 //    var row1item: ChecklistItem
@@ -171,6 +171,14 @@ class ChecklistsViewController: UITableViewController {
         let indexPaths = [indexPath]
         //.automatic是动画效果
         tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+        dismiss(animated: true, completion: nil)
     }
 }
 
